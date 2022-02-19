@@ -2,34 +2,21 @@
      2                                  section .data
      3 00000000 4D6573736167653A20-     	msg_fmt db "Message: %d", 10, 0
      3 00000009 25640A00           
-     4 0000000D 48656C6C6F20776F72-     	msg db "Hello world!", 0
-     4 00000016 6C642100           
-     5 0000001A 0C                      	msg_len db $-msg-1
-     6 0000001B 39050000                    value dd 1337
-     7                                  section .bss
-     8                                  section .text
-     9                                  	global main
-    10                                  main:
-    11 00000000 55                          push rbp
-    12 00000001 4889E5                      mov rbp, rsp
-    13                                  
-    14 00000004 48BF-                       mov rdi, msg_fmt
-    14 00000006 [0000000000000000] 
-    15 0000000E 488B3425[1B000000]          mov rsi, [value]
-    16 00000016 B800000000                  mov rax, 0
-    17 0000001B E8(00000000)                call printf
-    18                                  
-    19 00000020 4889EC                      mov rsp, rbp
-    20 00000023 5D                          pop rbp
-    21                                  
-    22                                  	;mov rax, 1	; write
-    23                                  	;mov rdi, 1	; to stdout
-    24                                  	;mov rsi, msg	; set msg
-    25                                  	;mov rdx, msg_len	; msg len
-    26                                  	;syscall
-    27                                  
-    28                                  	;mov rax, 60	; exit
-    29                                  	;mov rdi, 1	; exit code
-    30                                  	;syscall
-    31                                  
-    32 00000024 C3                          ret
+     4 0000000D 39050000                    value dd 1337
+     5                                  section .bss
+     6                                  section .text
+     7                                  	global main
+     8                                  main:
+     9 00000000 55                          push rbp
+    10 00000001 4889E5                      mov rbp, rsp
+    11                                  
+    12 00000004 48BF-                       mov rdi, msg_fmt
+    12 00000006 [0000000000000000] 
+    13 0000000E 488B3425[0D000000]          mov rsi, [value]
+    14 00000016 B800000000                  mov rax, 0
+    15 0000001B E8(00000000)                call printf
+    16                                  
+    17 00000020 4889EC                      mov rsp, rbp
+    18 00000023 5D                          pop rbp
+    19                                  
+    20 00000024 C3                          ret
